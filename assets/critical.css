@@ -115,3 +115,37 @@ body {
 .shopify-section > .full-width {
   grid-column: 1 / -1;
 }
+
+
+
+
+
+
+
+
+
+.shipping-message-container {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border: 1px solid #d1d5db; /* gray-300 */
+  border-radius: 0.5rem;
+  background-color: #f9fafb; /* gray-50 */
+  font-family: Arial, sans-serif;
+}
+.custom-shipping-note {
+  font-size: 1.125rem; /* text-lg */
+  font-weight: bold;
+  color: #059669; /* green-600 */
+  display: flex;
+  align-items: center;
+}
+.default-shipping-note {
+  font-size: 1rem; /* text-base */
+  color: #4b5563; /* gray-600 */
+}
+.shipping-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  color: #3b82f6; /* blue-500 */
+}

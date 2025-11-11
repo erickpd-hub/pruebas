@@ -1,0 +1,31 @@
+  1. Asignar el valor del campo meta a una variable para facilitar la lectura y el acceso.
+  NOTA: En Liquid 2.0, los metafields de producto se acceden a través de 'product.metafields.namespace.key'
+{% endcomment %}
+{% assign shipping_note_value = product.metafields.custom.shipping_note %}
+
+{% comment %}
+  2. Iniciar la lógica condicional (IF/ELSE).
+  Se comprueba si la variable existe (no es 'nil') Y si no está en blanco.
+  La propiedad '.value' asegura que se comprueba el contenido real del campo meta.
+{% endcomment %}
+
+<div class="shipping-message-container">
+  {% if shipping_note_value != blank and shipping_note_value.value != blank %}
+    
+    {% comment %} CÓDIGO SI EL CAMPO META EXISTE Y TIENE VALOR (PERSONALIZADO) {% endcomment %}
+    <p class="custom-shipping-note">
+      <svg class="shipping-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      {{ shipping_note_value.value }}
+    </p>
+
+  {% else %}
+
+    {% comment %} CÓDIGO SI EL CAMPO META FALTA O ESTÁ EN BLANCO (FALLBACK POR DEFECTO) {% endcomment %}
+    <p class="default-shipping-note">
+      <span style="font-weight: 600;">Envío Estándar:</span> Se envía en 3-5 días.
+    </p>
+
+  {% endif %}
+</div>
