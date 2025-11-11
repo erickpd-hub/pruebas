@@ -1,12 +1,53 @@
-  1. Asignar el valor del campo meta a una variable para facilitar la lectura y el acceso.
-  NOTA: En Liquid 2.0, los metafields de producto se acceden a través de 'product.metafields.namespace.key'
+{% comment %}
+  SOLUCIÓN A LA PRUEBA: Renderizado Condicional de Metafield en Página de Producto
+
+  Objetivo: Mostrar un mensaje de envío personalizado desde el campo meta del producto
+            (custom.shipping_note) si existe y no está en blanco.
+            De lo contrario, mostrar el mensaje de respaldo ("Se envía en 3-5 días").
+  
+  NOTA: Los estilos CSS están incluidos aquí para asegurar la visibilidad sin depender de archivos externos.
+{% endcomment %}
+
+{% comment %}
+  1. Definición de estilos para garantizar la visibilidad y estética
+{% endcomment %}
+<style>
+  .shipping-message-container {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px solid #d1d5db; /* gray-300 */
+    border-radius: 0.5rem;
+    background-color: #f0fff4; /* Verde muy claro para destacar */
+    font-family: Arial, sans-serif;
+    display: block;
+  }
+  .custom-shipping-note {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: bold;
+    color: #047857; /* green-700 fuerte */
+    display: flex;
+    align-items: center;
+  }
+  .default-shipping-note {
+    font-size: 1rem; /* text-base */
+    color: #4b5563; /* gray-600 */
+    font-style: italic;
+  }
+  .shipping-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    color: #047857; /* Icono verde */
+  }
+</style>
+
+{% comment %}
+  2. Asignar el valor del campo meta a una variable.
 {% endcomment %}
 {% assign shipping_note_value = product.metafields.custom.shipping_note %}
 
 {% comment %}
-  2. Iniciar la lógica condicional (IF/ELSE).
-  Se comprueba si la variable existe (no es 'nil') Y si no está en blanco.
-  La propiedad '.value' asegura que se comprueba el contenido real del campo meta.
+  3. Lógica condicional (IF/ELSE)
 {% endcomment %}
 
 <div class="shipping-message-container">
@@ -29,3 +70,7 @@
 
   {% endif %}
 </div>
+
+{% comment %}
+  FIN DE LA SOLUCIÓN
+{% endcomment %}
