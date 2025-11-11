@@ -21,6 +21,10 @@
   {% form 'product', product %}
     {% assign current_variant = product.selected_or_first_available_variant %}
 
+   
+
+    {% render 'custom.shipping_note' %}
+
     <select name="id">
       {% for variant in product.variants %}
         <option
