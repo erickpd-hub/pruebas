@@ -1,11 +1,8 @@
-{% comment %}
-  Asigna las configuraciones (settings) a variables Liquid
-{% endcomment %}
 {% assign title = section.settings.title %}
+{% assign text_color = section.settings.text_color %}
 {% assign description = section.settings.description %}
 {% assign background_color = section.settings.background_color %}
-{% assign text_color = section.settings.text_color %} 
-{# AÑADIDO: Nueva variable para el color del texto #}
+
 
 <section 
   class="custom-featured-text-section"
@@ -37,13 +34,13 @@
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    color: {{ text_color | default: '#333333' }}; /* APLICACIÓN del color al título */
+    color: {{ text_color | default: '#555555' }};
   }
   
   .custom-featured-text__description {
     font-size: 1.125rem;
     line-height: 1.6;
-    color: {{ text_color | default: '#555555' }}; /* APLICACIÓN del color a la descripción */
+    color: {{ text_color | default: '#555555' }};
   }
   
   @media (min-width: 768px) {
@@ -68,6 +65,12 @@
       "label": "Título",
       "default": "Escribe tu texto Aquí"
     },
+    { 
+      "type": "color",
+      "id": "text_color",
+      "label": "Color de Texto",
+      "default": "#111111" 
+    },
     {
       "type": "richtext",
       "id": "description",
@@ -79,13 +82,7 @@
       "id": "background_color",
       "label": "Color de Fondo",
       "default": "#f3f4f6"
-    },
-    { 
-      "type": "color",
-      "id": "text_color",
-      "label": "Color de Texto",
-      "default": "#333333" 
-    } 
+    }
   ],
   "presets": [
     {
