@@ -2,9 +2,12 @@
 {% assign description = section.settings.description %}
 {% assign background_color = section.settings.background_color %}
 
-{% if title != blank %}
-  <section style="background-color: {{ background_color }};">
-    <div class="custom-featured-text__container">
+<section 
+  class="custom-featured-text-section"
+  style="background-color: {{ background_color | default: '#f3f4f6' }};{% unless title != blank %} display: none;{% endunless %}"
+>
+  <div class="custom-featured-text__container">
+    {% if title != blank %}
       <h2 class="custom-featured-text__title">
         {{ title | escape }}
       </h2>
@@ -13,17 +16,9 @@
           {{ description }}
         </div>
       {% endif %}
-    </div>
-  </section>
-{% else %}
-  <section style="background-color: {{ background_color | default: '#f3f4f6' }};">
-    <div class="custom-featured-text__container">
-      <p style="text-align: center; padding: 2rem; color: #777;">
-        Agrega un título para mostrar esta sección
-      </p>
-    </div>
-  </section>
-{% endif %}
+    {% endif %}
+  </div>
+</section>
 
 {% stylesheet %}
   .custom-featured-text__container {
@@ -90,4 +85,3 @@
   ]
 }
 {% endschema %}
-
