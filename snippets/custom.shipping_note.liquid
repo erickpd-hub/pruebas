@@ -1,16 +1,8 @@
-{% comment %}
-  SOLUCIÓN A LA PRUEBA: Renderizado Condicional de Metafield en Página de Producto
 
-  Objetivo: Mostrar un mensaje de envío personalizado desde el campo meta del producto
-            (custom.shipping_note) si existe y no está en blanco.
-            De lo contrario, mostrar el mensaje de respaldo ("Se envía en 3-5 días").
-  
-  NOTA: Los estilos CSS están incluidos aquí para asegurar la visibilidad sin depender de archivos externos.
-{% endcomment %}
 
-{% comment %}
-  1. Definición de estilos para garantizar la visibilidad y estética
-{% endcomment %}
+
+
+
 <style>
   .shipping-message-container {
     margin-top: 1.5rem;
@@ -41,27 +33,23 @@
   }
 </style>
 
-{% comment %}
-  2. Asignar el valor del campo meta a una variable.
-{% endcomment %}
+
+
+
 {% if product %}
   {% assign shipping_note_value = product.metafields.custom.shipping_note %}
 {% else %}
   {% assign shipping_note_value = blank %}
 {% endif %}
 
-{% comment %}
-  3. Lógica condicional (IF/ELSE)
-{% endcomment %}
+
 
 <div class="shipping-message-container">
   {% if shipping_note_value != blank and shipping_note_value.value != blank %}
     
-    {% comment %} CÓDIGO SI EL CAMPO META EXISTE Y TIENE VALOR (PERSONALIZADO) {% endcomment %}
+
     <p class="custom-shipping-note">
-      <svg class="shipping-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
+ 
       {{ shipping_note_value.value }}
     </p>
 
@@ -69,12 +57,9 @@
 
     {% comment %} CÓDIGO SI EL CAMPO META FALTA O ESTÁ EN BLANCO (FALLBACK POR DEFECTO) {% endcomment %}
     <p class="default-shipping-note">
-      <span style="font-weight: 600;">Envío Estándar:</span> Se envía en 3-5 días.
+      <span style="font-weight: 600;">Standar Shipping:</span> Ships in 3-5 days.
     </p>
 
   {% endif %}
 </div>
 
-{% comment %}
-  FIN DE LA SOLUCIÓN
-{% endcomment %}
