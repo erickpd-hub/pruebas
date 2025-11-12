@@ -1,0 +1,59 @@
+
+{% comment %} Asignar valores de configuración {% endcomment %}
+{% assign title = section.settings.title %}
+{% assign description = section.settings.description %}
+{% assign background_color = section.settings.background_color %}
+
+
+
+
+
+{% if title != blank %}
+  <section 
+    class="py-12 px-6 lg:px-16 text-center rounded-lg shadow-lg mb-8"
+    style="background-color: {{ background_color }}; color: #1f2937;"
+  >
+    <div class="container mx-auto max-w-4xl">
+      <h2 class="text-3xl lg:text-4xl font-extrabold mb-4 border-b-2 inline-block pb-2 border-current">
+        {{ title | escape }}
+      </h2>
+      <div class="text-lg leading-relaxed">
+        {{ description }}
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+
+{% schema %}
+{
+  "name": "Texto Destacado Personalizado",
+  "tag": "section",
+  "class": "section-featured-text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título Principal",
+      "default": "Destaca tu Mensaje Aquí"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Descripción del Contenido",
+      "default": "<p>Usa este bloque para informar a tus clientes sobre ofertas, noticias importantes o políticas de la tienda.</p>"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Color de Fondo",
+      "default": "#f3f4f6"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Texto Destacado Personalizado"
+    }
+  ]
+}
+{% endschema %}
