@@ -26,7 +26,7 @@
       "name": "Custom text",
       "settings": {
         "title": "aaaa",
-        "text_color": "#9000ff",
+        "text_color": "#ff0000",
         "description": "<p>Agrega una descripción para tu texto.</p>",
         "background_color": "#f3f4f6"
       }
