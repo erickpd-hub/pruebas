@@ -1,5 +1,4 @@
 {% assign title = section.settings.title %}
-{% assign text_color = section.settings.text_color %}
 {% assign description = section.settings.description %}
 {% assign background_color = section.settings.background_color %}
 
@@ -34,13 +33,13 @@
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    color: {{ text_color | default: '#555555' }}; !important;
+    color: 111111;
   }
   
   .custom-featured-text__description {
     font-size: 1.125rem;
     line-height: 1.6;
-    color: {{ text_color | default: '#555555' }};
+    color: 111111;
   }
   
   @media (min-width: 768px) {
