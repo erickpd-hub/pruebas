@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {% comment %}
   SOLUCIÓN A LA PRUEBA: Renderizado Condicional de Metafield en Página de Producto
 
@@ -45,7 +44,11 @@
 {% comment %}
   2. Asignar el valor del campo meta a una variable.
 {% endcomment %}
-{% assign shipping_note_value = product.metafields.custom.shipping_note %}
+{% if product %}
+  {% assign shipping_note_value = product.metafields.custom.shipping_note %}
+{% else %}
+  {% assign shipping_note_value = blank %}
+{% endif %}
 
 {% comment %}
   3. Lógica condicional (IF/ELSE)
@@ -75,5 +78,3 @@
 {% comment %}
   FIN DE LA SOLUCIÓN
 {% endcomment %}
-=======
->>>>>>> b7aed97d1c89de78942767e0a3d8c9c6df269c7d
