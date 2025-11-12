@@ -20,10 +20,21 @@
         "grid_item_width": "collections--full",
         "grid_gap": 10
       }
+    },
+    "custom_featured_text_grg7fM": {
+      "type": "custom-featured-text",
+      "name": "Custom text",
+      "settings": {
+        "title": "aaaa",
+        "text_color": "#9000ff",
+        "description": "<p>Agrega una descripción para tu texto.</p>",
+        "background_color": "#f3f4f6"
+      }
     }
   },
   "order": [
     "main",
-    "collections_w7yATC"
+    "collections_w7yATC",
+    "custom_featured_text_grg7fM"
   ]
 }
