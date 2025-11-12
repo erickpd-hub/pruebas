@@ -1,64 +1,49 @@
-{% comment %} Asignar valores de configuración {% endcomment %}
+
 {% assign title = section.settings.title %}
 {% assign description = section.settings.description %}
 {% assign background_color = section.settings.background_color %}
 
-<section 
-  class="custom-featured-text"
-  style="background-color: {{ background_color }}; color: #1f2937;"
->
-  <div class="custom-featured-text__container">
-    {% if title != blank %}
+{% if title != blank %}
+  <section style="background-color: {{ background_color }};">
+    <div class="custom-featured-text__container">
       <h2 class="custom-featured-text__title">
         {{ title | escape }}
       </h2>
-    {% endif %}
-    {% if description != blank %}
-      <div class="custom-featured-text__description">
-        {{ description }}
-      </div>
-    {% endif %}
-  </div>
-</section>
+      {% if description != blank %}
+        <div class="custom-featured-text__description">
+          {{ description }}
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endif %}
 
 {% stylesheet %}
-  .custom-featured-text {
-    padding: 3rem 1.5rem;
-    text-align: center;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 2rem;
-  }
-  
-  @media (min-width: 1024px) {
-    .custom-featured-text {
-      padding: 3rem 4rem;
-    }
-  }
-  
   .custom-featured-text__container {
-    max-width: 56rem;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 2rem 1rem;
   }
   
   .custom-featured-text__title {
-    font-size: 1.875rem;
-    font-weight: 800;
+    font-size: 2rem;
+    font-weight: bold;
     margin-bottom: 1rem;
-    border-bottom: 2px solid currentColor;
-    display: inline-block;
-    padding-bottom: 0.5rem;
-  }
-  
-  @media (min-width: 1024px) {
-    .custom-featured-text__title {
-      font-size: 2.25rem;
-    }
   }
   
   .custom-featured-text__description {
     font-size: 1.125rem;
-    line-height: 1.75;
+    line-height: 1.6;
+  }
+  
+  @media (min-width: 768px) {
+    .custom-featured-text__container {
+      padding: 3rem 2rem;
+    }
+    
+    .custom-featured-text__title {
+      font-size: 2.5rem;
+    }
   }
 {% endstylesheet %}
 
@@ -69,14 +54,14 @@
     {
       "type": "text",
       "id": "title",
-      "label": "Título Principal",
+      "label": "Título",
       "default": "Destaca tu Mensaje Aquí"
     },
     {
       "type": "richtext",
       "id": "description",
-      "label": "Descripción del Contenido",
-      "default": "<p>Usa este bloque para informar a tus clientes sobre ofertas, noticias importantes o políticas de la tienda.</p>"
+      "label": "Descripción",
+      "default": "<p>Agrega una descripción para tu mensaje destacado.</p>"
     },
     {
       "type": "color",
@@ -91,10 +76,11 @@
       "category": "Custom",
       "settings": {
         "title": "Destaca tu Mensaje Aquí",
-        "description": "<p>Usa este bloque para informar a tus clientes sobre ofertas, noticias importantes o políticas de la tienda.</p>",
+        "description": "<p>Agrega una descripción para tu mensaje destacado.</p>",
         "background_color": "#f3f4f6"
       }
     }
   ]
 }
 {% endschema %}
+
