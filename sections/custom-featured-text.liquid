@@ -1,29 +1,74 @@
-
 {% comment %} Asignar valores de configuración {% endcomment %}
 {% assign title = section.settings.title %}
 {% assign description = section.settings.description %}
 {% assign background_color = section.settings.background_color %}
 
-
-
-
-
-{% if title != blank %}
-  <section 
-    class="py-12 px-6 lg:px-16 text-center rounded-lg shadow-lg mb-8"
-    style="background-color: {{ background_color }}; color: #1f2937;"
-  >
-    <div class="container mx-auto max-w-4xl">
-      <h2 class="text-3xl lg:text-4xl font-extrabold mb-4 border-b-2 inline-block pb-2 border-current">
+<section 
+  class="custom-featured-text"
+  style="background-color: {{ background_color }}; color: #1f2937;"
+>
+  <div class="custom-featured-text__container">
+    {% if title != blank %}
+      <h2 class="custom-featured-text__title">
         {{ title | escape }}
       </h2>
-      <div class="text-lg leading-relaxed">
+    {% else %}
+      <h2 class="custom-featured-text__title">
+        {{ section.settings.title | default: "Destaca tu Mensaje Aquí" | escape }}
+      </h2>
+    {% endif %}
+    {% if description != blank %}
+      <div class="custom-featured-text__description">
         {{ description }}
       </div>
-    </div>
-  </section>
-{% endif %}
+    {% else %}
+      <div class="custom-featured-text__description">
+        {{ section.settings.description | default: "<p>Usa este bloque para informar a tus clientes sobre ofertas, noticias importantes o políticas de la tienda.</p>" }}
+      </div>
+    {% endif %}
+  </div>
+</section>
 
+{% stylesheet %}
+  .custom-featured-text {
+    padding: 3rem 1.5rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .custom-featured-text {
+      padding: 3rem 4rem;
+    }
+  }
+  
+  .custom-featured-text__container {
+    max-width: 56rem;
+    margin: 0 auto;
+  }
+  
+  .custom-featured-text__title {
+    font-size: 1.875rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid currentColor;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+  }
+  
+  @media (min-width: 1024px) {
+    .custom-featured-text__title {
+      font-size: 2.25rem;
+    }
+  }
+  
+  .custom-featured-text__description {
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
@@ -50,7 +95,8 @@
   ],
   "presets": [
     {
-      "name": "Texto Destacado Personalizado"
+      "name": "Texto Destacado Personalizado",
+      "category": "Custom"
     }
   ]
 }
