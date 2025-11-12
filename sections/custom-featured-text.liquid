@@ -3,7 +3,7 @@
 {% assign description = section.settings.description %}
 {% assign background_color = section.settings.background_color %}
 
-<section>
+<section 
   class="custom-featured-text"
   style="background-color: {{ background_color }}; color: #1f2937;"
 >
@@ -12,18 +12,10 @@
       <h2 class="custom-featured-text__title">
         {{ title | escape }}
       </h2>
-    {% else %}
-      <h2 class="custom-featured-text__title">
-        {{ section.settings.title | default: "Destaca tu Mensaje Aquí" | escape }}
-      </h2>
     {% endif %}
     {% if description != blank %}
       <div class="custom-featured-text__description">
         {{ description }}
-      </div>
-    {% else %}
-      <div class="custom-featured-text__description">
-        {{ section.settings.description | default: "<p>Usa este bloque para informar a tus clientes sobre ofertas, noticias importantes o políticas de la tienda.</p>" }}
       </div>
     {% endif %}
   </div>
@@ -96,7 +88,12 @@
   "presets": [
     {
       "name": "Texto Destacado Personalizado",
-      "category": "Custom"
+      "category": "Custom",
+      "settings": {
+        "title": "Destaca tu Mensaje Aquí",
+        "description": "<p>Usa este bloque para informar a tus clientes sobre ofertas, noticias importantes o políticas de la tienda.</p>",
+        "background_color": "#f3f4f6"
+      }
     }
   ]
 }
